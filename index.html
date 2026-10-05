@@ -1,71 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Stonehurst HOA</title>
 
 <style>
 body{
-    font-family: Arial, sans-serif;
-    margin:0;
+    font-family:Arial,sans-serif;
     background:#f4f6f4;
-    color:#333;
+    margin:0;
 }
 
 header{
     background:#2f6b4f;
     color:white;
     text-align:center;
-    padding:30px;
+    padding:25px;
 }
 
-nav{
-    background:#24543f;
-    text-align:center;
-    padding:12px;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    margin:0 15px;
-    font-weight:bold;
-}
-
-section{
+.container{
     max-width:1000px;
-    margin:20px auto;
-    background:white;
+    margin:auto;
     padding:20px;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
 
-h2{
-    color:#2f6b4f;
-}
-
-.house-grid{
+.grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-    gap:10px;
+    gap:12px;
 }
 
 .house{
-    background:#eef5ef;
-    border:1px solid #d0ddd0;
-    padding:10px;
+    background:white;
+    border:2px solid #2f6b4f;
+    border-radius:10px;
+    padding:20px;
     text-align:center;
-    border-radius:8px;
+    cursor:pointer;
+    transition:.2s;
 }
 
-footer{
+.house:hover{
+    transform:scale(1.03);
+}
+
+.popup{
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 0 20px rgba(0,0,0,.25);
+    width:300px;
+    z-index:1000;
+}
+
+.overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    z-index:999;
+}
+
+button{
     background:#2f6b4f;
     color:white;
-    text-align:center;
-    padding:15px;
-    margin-top:20px;
+    border:none;
+    padding:10px 15px;
+    border-radius:6px;
+    cursor:pointer;
 }
 </style>
 </head>
@@ -73,71 +81,68 @@ footer{
 <body>
 
 <header>
-    <h1>Stonehurst HOA</h1>
-    <p>Welcome to the Stonehurst Community Website</p>
+<h1>Stonehurst HOA</h1>
+<p>Click a house to view information</p>
 </header>
 
-<nav>
-    <a href="#announcements">Announcements</a>
-    <a href="#map">Neighborhood</a>
-    <a href="#documents">Documents</a>
-    <a href="#events">Events</a>
-</nav>
+<div class="container">
 
-<section id="announcements">
-    <h2>📢 Announcements</h2>
-    <p>Welcome to the new Stonehurst HOA website.</p>
-    <p>Next HOA Meeting: November 12 at 7:00 PM.</p>
-</section>
+<div class="grid">
 
-<section id="map">
-    <h2>🏠 Neighborhood Homes</h2>
+<div class="house" onclick="showHouse('3802 Rockhaven Ct')">🏠 3802</div>
+<div class="house" onclick="showHouse('3803 Rockhaven Ct (HOA)')">🏛️ 3803</div>
+<div class="house" onclick="showHouse('3806 Rockhaven Ct')">🏠 3806</div>
+<div class="house" onclick="showHouse('3807 Rockhaven Ct')">🏠 3807</div>
+<div class="house" onclick="showHouse('3811 Rockhaven Ct')">🏠 3811</div>
+<div class="house" onclick="showHouse('3815 Rockhaven Ct')">🏠 3815</div>
+<div class="house" onclick="showHouse('3819 Rockhaven Ct')">🏠 3819</div>
+<div class="house" onclick="showHouse('3822 Rockhaven Ct')">🏠 3822</div>
+<div class="house" onclick="showHouse('3823 Rockhaven Ct')">🏠 3823</div>
+<div class="house" onclick="showHouse('3827 Rockhaven Ct')">🏠 3827</div>
+<div class="house" onclick="showHouse('3831 Rockhaven Ct')">🏠 3831</div>
+<div class="house" onclick="showHouse('3834 Rockhaven Ct')">🏠 3834</div>
+<div class="house" onclick="showHouse('3835 Rockhaven Ct')">🏠 3835</div>
+<div class="house" onclick="showHouse('3839 Rockhaven Ct')">🏠 3839</div>
+<div class="house" onclick="showHouse('3843 Rockhaven Ct')">🏠 3843</div>
+<div class="house" onclick="showHouse('3846 Rockhaven Ct')">🏠 3846</div>
+<div class="house" onclick="showHouse('3847 Rockhaven Ct')">🏠 3847</div>
+<div class="house" onclick="showHouse('3850 Rockhaven Ct')">🏠 3850</div>
+<div class="house" onclick="showHouse('3851 Rockhaven Ct')">🏠 3851</div>
 
-    <div class="house-grid">
-        <div class="house">🏠 3802</div>
-        <div class="house">🏛️ 3803 HOA</div>
-        <div class="house">🏠 3806</div>
-        <div class="house">🏠 3807</div>
-        <div class="house">🏠 3811</div>
-        <div class="house">🏠 3815</div>
-        <div class="house">🏠 3819</div>
-        <div class="house">🏠 3822</div>
-        <div class="house">🏠 3823</div>
-        <div class="house">🏠 3827</div>
-        <div class="house">🏠 3831</div>
-        <div class="house">🏠 3834</div>
-        <div class="house">🏠 3835</div>
-        <div class="house">🏠 3839</div>
-        <div class="house">🏠 3843</div>
-        <div class="house">🏠 3846</div>
-        <div class="house">🏠 3847</div>
-        <div class="house">🏠 3850</div>
-        <div class="house">🏠 3851</div>
-    </div>
-</section>
+</div>
 
-<section id="documents">
-    <h2>📄 HOA Documents</h2>
-    <ul>
-        <li>HOA Bylaws</li>
-        <li>Meeting Minutes</li>
-        <li>Community Rules</li>
-        <li>Annual Budget</li>
-    </ul>
-</section>
+</div>
 
-<section id="events">
-    <h2>📅 Upcoming Events</h2>
-    <ul>
-        <li>November 12 – HOA Meeting</li>
-        <li>December 5 – Holiday Gathering</li>
-        <li>Spring – Community Cleanup Day</li>
-    </ul>
-</section>
+<div class="overlay" id="overlay"></div>
 
-<footer>
-    Stonehurst HOA • Community Website
-</footer>
+<div class="popup" id="popup">
+<h2 id="houseTitle"></h2>
+
+<p><strong>Resident:</strong> Available upon homeowner approval</p>
+
+<p><strong>Email:</strong> Not provided</p>
+
+<p><strong>Phone:</strong> Not provided</p>
+
+<p><strong>Notes:</strong> House profile coming soon.</p>
+
+<br>
+
+<button onclick="closePopup()">Close</button>
+</div>
+
+<script>
+function showHouse(address){
+    document.getElementById("houseTitle").innerText = address;
+    document.getElementById("popup").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+}
+</script>
 
 </body>
 </html>
